@@ -19,4 +19,3 @@ export async function getOlaEstimate(pickup, drop) {
     eta: Math.round(distance.durationMin),
   };
 }
-

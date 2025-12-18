@@ -8,18 +8,23 @@ export async function getCoordinates(address) {
 
   console.log("🌐 Geocoding URL:", url);
 
-  const res = await fetch(url);
-  const data = await res.json();
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
 
-  console.log("📄 Geocoding response:", data); // debug
+    console.log("📄 Geocoding response:", data); // debug
 
-  if (data.status === "OK" && data.results.length > 0) {
-    const { lat, lng } = data.results[0].geometry.location;
-    return { lat, lng };
+    if (data.status === "OK" && data.results.length > 0) {
+      const { lat, lng } = data.results[0].geometry.location;
+      return { lat, lng };
+    }
+
+    console.error("❌ Geocoding returned empty results for:", address);
+    return null;
+  } catch (error) {
+    console.error("❌ Error fetching coordinates:", error);
+    return null;
   }
-
-  console.error("❌ Geocoding returned empty results for:", address);
-  return null;
 }
 
 

@@ -112,4 +112,3 @@ export async function getUberEstimate(origin, destination) {
     throw new Error(`Failed to fetch Uber estimate: ${err.response?.status} - ${JSON.stringify(err.response?.data)}`);
   }
 }
-// ...existing code...

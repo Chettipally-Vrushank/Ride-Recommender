@@ -19,4 +19,3 @@ export async function getRapidoEstimate(pickup, drop) {
     eta: Math.round(distance.durationMin),
   };
 }
-
